@@ -10,8 +10,8 @@ class MainApplication:
         return DeviceListPage(self.driver,self)
     
     def normal_wait(self):
-        time.sleep(3)
+        time.sleep(1)
 
     def high_wait(self):
-        time.sleep(10)
+        time.sleep(3)
 
