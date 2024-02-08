@@ -15,7 +15,7 @@ class DeviceListPage:
             
     def click_devices_tab(self):
           devices_tab =  '''
-          document.querySelector("body > saltmine-app").shadowRoot.querySelector("#content > iron-pages > device-list").shadowRoot.querySelector("iron-pages > div.background.iron-selected > div > a:nth-child(2)").click();        
+          document.querySelector("saltmine-app").shadowRoot.querySelector("device-list").shadowRoot.querySelector("iron-pages > div.background.iron-selected > div > a:nth-child(2)").click();        
           '''
           self.main_application.normal_wait()
           self.driver.execute_script(devices_tab)
