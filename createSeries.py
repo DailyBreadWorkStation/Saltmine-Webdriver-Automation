@@ -1,10 +1,12 @@
 from selenium.webdriver.common.keys import Keys
+import json
 
 class DeviceListPage:
-    def __init__(self, driver,main_application):
+    def __init__(self, driver,main_application,config_file='config.json'):
         self.driver = driver
         self.main_application = main_application
-        self.main_application.normal_wait()
+        with open(config_file, 'r') as f:
+            self.config = json.load(f)
            
     def click_add_series_fab(self):
           add_series_fab_script = '''
@@ -17,7 +19,7 @@ class DeviceListPage:
           devices_tab =  '''
           document.querySelector("saltmine-app").shadowRoot.querySelector("device-list").shadowRoot.querySelector("iron-pages > div.background.iron-selected > div > a:nth-child(2)").click();        
           '''
-          self.main_application.normal_wait()
+          self.main_application.high_wait()
           self.driver.execute_script(devices_tab)
 
     def switchWindow(self):
@@ -29,7 +31,7 @@ class DeviceListPage:
           ''')
           self.main_application.normal_wait()
           series_input.send_keys(Keys.BACKSPACE * 10)
-          series_input.send_keys("SM0202")
+          series_input.send_keys(self.config['CertConfig']['series_name'])
           series_input.send_keys(Keys.RETURN)
             
 
@@ -83,11 +85,17 @@ class DeviceListPage:
             
     def click_create_button(self):
             create_button_script = '''
-            document.querySelector("saltmine-app").shadowRoot.querySelector("device-list").shadowRoot.querySelector("series-form-v2").shadowRoot.querySelector("mwc-dialog > div.form-footer > mwc-button.saltmine-button.button-submit").shadowRoot.querySelector("#button").click();
+            document.querySelector("saltmine-app").shadowRoot.querySelector("device-list").shadowRoot.querySelector("series-form-v2").shadowRoot.querySelector("mwc-button.saltmine-button.button-submit").click();
             '''
             self.main_application.normal_wait()
             self.driver.execute_script(create_button_script)
             self.main_application.high_wait()
+
+    def quit_browser(self):
+            self.main_application.normal_wait()
+            self.driver.quit()
+
+ 
          
 
             

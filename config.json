@@ -1,0 +1,18 @@
+{
+    "CertConfig": {
+      "series_name": "sm0223",
+      "cert_scope": "apertureodm-2024-sm0223",
+      "test_url": "https://devicecertification.youtube/?nonprodApi=true",
+      "user_agent": {
+        "main": "Mozilla/5.0 (webOS.TV-2023) Cobalt/24.lts.10.1032622-qa (unlike Gecko) v8/8.8.278.8-jit gles Evergreen/4.10.2 Evergreen-Full Evergreen-Uncompressed Starboard/14, LG_TV_O22N_2023/02.01.20",
+        "brand": "Cookies",
+        "model": "Saltmine"
+      },
+      "api_type": "nonprod-api",
+      "submit_option": "--submit",
+      "skip_options": ["internal", "Time"],
+      "device_id": "932"
+      
+    }
+  }
+  
